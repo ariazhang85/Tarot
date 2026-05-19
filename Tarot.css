@@ -1,0 +1,340 @@
+/* === IMPORTS === */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Cinzel+Decorative:wght@400&display=swap');
+
+/* === VARIABLES === */
+:root {
+  --purple:       #9b6dff;
+  --purple-soft:  #c4a0ff;
+  --purple-dim:   rgba(155, 109, 255, 0.18);
+  --purple-glow:  rgba(155, 109, 255, 0.35);
+  --rose:         #e8a0bf;
+  --rose-dim:     rgba(232, 160, 191, 0.2);
+  --surface:      rgba(8, 4, 20, 0.72);
+  --surface-deep: rgba(5, 2, 14, 0.88);
+  --border:       rgba(155, 109, 255, 0.22);
+  --border-hover: rgba(196, 160, 255, 0.55);
+  --text:         #ede0ff;
+  --text-dim:     rgba(196, 170, 255, 0.55);
+  --gold:         #d4af72;
+}
+
+/* === RESET === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+*:focus { outline: none; }
+
+/* === BODY === */
+body {
+  min-height: 100vh;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: url('background.jpg') center/cover no-repeat fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Deep atmospheric overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(80, 20, 160, 0.45) 0%, transparent 65%),
+    radial-gradient(ellipse at 100% 100%, rgba(120, 30, 100, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 80%, rgba(30, 10, 80, 0.35) 0%, transparent 55%),
+    rgba(4, 1, 14, 0.62);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(2, 0, 10, 0.7) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === PAGES === */
+.page, #home-page, .title-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* === TYPOGRAPHY === */
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 2px 30px var(--purple-glow), 0 0 60px rgba(155, 109, 255, 0.15);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+  opacity: 0;
+  animation: riseIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
+}
+
+p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  margin-bottom: 2.2rem;
+  opacity: 0;
+  animation: riseIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.25s;
+}
+
+/* === ANIMATIONS === */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === BUTTONS === */
+.btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  color: var(--purple-soft);
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 14px 44px;
+  transition: color 0.4s ease;
+  opacity: 0;
+  animation: riseIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.btn:hover { color: #fff; }
+.btn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+#home-page .btn, .title-area .btn { margin-bottom: 1rem; min-width: 280px; }
+#home-page .btn:nth-child(3) { animation-delay: 0.35s; }
+#home-page .btn:nth-child(4) { animation-delay: 0.5s; }
+#home-page .btn:nth-child(5) { animation-delay: 0.65s; }
+
+.back-btn { font-size: 0.62rem; padding: 8px 22px; margin-bottom: 2rem; align-self: flex-start; letter-spacing: 3px; }
+
+/* === SPREAD CONTAINER === */
+.spread-container { display: flex; gap: 1.8rem; flex-wrap: wrap; justify-content: center; margin-top: 2.5rem; width: 100%; max-width: 900px; }
+
+/* === TAROT CARDS === */
+.tarot-card {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem 1.4rem;
+  width: 196px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarot-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; right: -100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple-soft), var(--rose), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tarot-card::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(155, 109, 255, 0.07);
+  border-radius: 1px;
+  transition: border-color 0.4s ease;
+  pointer-events: none;
+}
+
+.tarot-card:hover { transform: translateY(-8px); border-color: rgba(196, 160, 255, 0.45); box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px var(--purple-dim); }
+.tarot-card:hover::before { opacity: 1; }
+.tarot-card:hover::after  { border-color: rgba(155, 109, 255, 0.18); }
+.tarot-card.reversed { border-color: rgba(232, 160, 191, 0.25); }
+.tarot-card.reversed:hover { border-color: rgba(232, 160, 191, 0.5); box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px var(--rose-dim); }
+
+.tarot-card:nth-child(1) { animation-delay: 0.15s; }
+.tarot-card:nth-child(2) { animation-delay: 0.35s; }
+.tarot-card:nth-child(3) { animation-delay: 0.55s; }
+
+/* === CARD CONTENT === */
+.card-position { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); opacity: 0.75; margin-bottom: 1.2rem; }
+.card-symbol { font-size: 2rem; margin-bottom: 1rem; line-height: 1; filter: drop-shadow(0 0 10px var(--purple-glow)); }
+.card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; letter-spacing: 1.5px; color: var(--text); line-height: 1.5; }
+.card-name.is-reversed { display: inline-block; transform: rotate(180deg); }
+.reversed-label { font-family: 'Cinzel', serif; font-size: 0.5rem; color: var(--rose); letter-spacing: 2.5px; text-transform: uppercase; margin-top: 0.8rem; opacity: 0.8; }
+.click-hint { font-family: 'Cormorant Garamond', serif; font-size: 0.72rem; font-style: italic; color: var(--text-dim); margin-top: 1.2rem; opacity: 0.6; letter-spacing: 1px; }
+
+/* === MODAL === */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(2, 0, 10, 0.88);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100; padding: 1.5rem;
+  opacity: 0; transition: opacity 0.35s ease;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.modal-overlay.visible { opacity: 1; }
+
+.modal-box {
+  background: var(--surface-deep);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 3rem 2.5rem;
+  max-width: 540px; width: 100%;
+  text-align: left; position: relative;
+  max-height: 88vh; overflow-y: auto;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple-soft), transparent);
+}
+
+.modal-box::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(155, 109, 255, 0.07);
+  pointer-events: none;
+}
+
+.modal-overlay.visible .modal-box { transform: translateY(0) scale(1); }
+
+.modal-position { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 0.6rem; }
+.modal-title { font-family: 'Cinzel Decorative', serif; font-size: 1.4rem; font-weight: 400; color: #fff; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 0 0 20px var(--purple-glow); }
+.modal-reversed-tag { display: none; font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(232, 160, 191, 0.3); padding: 4px 14px; margin-bottom: 1.4rem; }
+.modal-divider { border: none; border-top: 1px solid rgba(155, 109, 255, 0.12); margin: 1.2rem 0 1.6rem; }
+.modal-meaning-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1rem; }
+.modal-meaning { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-weight: 300; line-height: 2; color: rgba(230, 215, 255, 0.88); font-style: italic; letter-spacing: 0.3px; }
+.modal-close { position: absolute; top: 1.2rem; right: 1.5rem; background: transparent; border: none; color: var(--text-dim); font-family: 'Cinzel', serif; font-size: 0.85rem; cursor: pointer; padding: 4px 8px; letter-spacing: 1px; transition: color 0.3s ease; }
+.modal-close:hover { color: var(--purple-soft); }
+
+/* === HOROSCOPE PAGE === */
+.dob-container { display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap; justify-content: center; margin: 1.8rem 0 2.2rem; }
+.dob-group { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+.dob-label { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); opacity: 0.75; }
+
+.dob-input {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 12px 20px;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  outline: none;
+  width: 130px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.dob-input:focus { border-color: rgba(155, 109, 255, 0.5); box-shadow: 0 0 20px var(--purple-dim); color: #fff; }
+.dob-input::placeholder { color: var(--text-dim); letter-spacing: 3px; font-style: italic; }
+.dob-divider { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--rose); opacity: 0.6; padding-bottom: 0.8rem; }
+
+/* === COMPATIBILITY RESULTS === */
+#horoscope-result { width: 100%; max-width: 780px; margin-top: 2.5rem; }
+
+.compat-header { display: flex; align-items: center; justify-content: center; gap: 3rem; margin-bottom: 2rem; }
+.compat-signs { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.zsymbol { font-size: 2.8rem; filter: drop-shadow(0 0 12px var(--purple-glow)); }
+.zname { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--purple-soft); }
+.compat-heart { font-size: 1.6rem; color: var(--rose); opacity: 0.8; animation: beatHeart 2.2s ease infinite; }
+
+@keyframes beatHeart {
+  0%, 100% { transform: scale(1); }
+  15%       { transform: scale(1.2); }
+  30%       { transform: scale(1); }
+  45%       { transform: scale(1.12); }
+}
+
+.overall-score {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.overall-score::before { content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px; background: linear-gradient(90deg, transparent, var(--purple-soft), transparent); }
+
+.overall-num { font-family: 'Cinzel Decorative', serif; font-size: 3.2rem; color: #fff; text-shadow: 0 0 30px var(--purple-glow); letter-spacing: 4px; }
+.overall-stars { font-size: 1.1rem; color: var(--gold); letter-spacing: 6px; margin: 0.5rem 0; opacity: 0.85; }
+.overall-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 4px; color: var(--text-dim); }
+
+.compat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+
+.compat-card {
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.6rem 1.4rem;
+  text-align: left;
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.compat-card::before { content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px; background: linear-gradient(90deg, transparent, rgba(155,109,255,0.4), transparent); opacity: 0; transition: opacity 0.3s ease; }
+.compat-card:hover { border-color: rgba(196, 160, 255, 0.35); box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px var(--purple-dim); }
+.compat-card:hover::before { opacity: 1; }
+
+.compat-card:nth-child(1) { animation-delay: 0.1s; }
+.compat-card:nth-child(2) { animation-delay: 0.22s; }
+.compat-card:nth-child(3) { animation-delay: 0.34s; }
+.compat-card:nth-child(4) { animation-delay: 0.46s; }
+
+.compat-label { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); opacity: 0.8; margin-bottom: 0.5rem; }
+.compat-score { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--purple-soft); margin-bottom: 0.9rem; letter-spacing: 2px; }
+.compat-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; font-style: italic; font-weight: 300; line-height: 1.9; color: rgba(220, 205, 255, 0.75); letter-spacing: 0.3px; }

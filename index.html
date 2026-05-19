@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tarot Reading</title>
+  <link rel="stylesheet" href="Tarot.css">
+</head>
+<body>
+
+<!-- Home Page -->
+<div class="title-area" id="home-page">
+  <h1>🔮 Lucid Dreamin 🔮</h1>
+  <p>Still your mind. Focus on your question.</p>
+  <button class="btn" id="Tarot-btn">Tarot Utopia</button>
+  <button class="btn" id="Bazi-btn">Bazi Viewing</button>
+  <button class="btn" id="Horoscope-btn">Horoscope Musing</button>
+</div>
+
+<!-- Tarot Page -->
+<div id="tarot-page" class="page" style="display:none;">
+  <button class="btn back-btn" id="back-btn">← Back</button>
+  <h1>✦ Tarot Reading ✦</h1>
+  <p>Still your mind. Focus on your question.</p>
+  <button class="btn" id="draw-btn">Draw Three Cards</button>
+  <div id="card-results" class="spread-container"></div>
+  <div id="modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-position" id="modal-position"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div id="modal-reversed-tag" class="modal-reversed-tag">↑ Reversed ↑</div>
+      <hr class="modal-divider">
+      <div class="modal-meaning-label">Interpretation</div>
+      <div class="modal-meaning" id="modal-meaning"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bazi Page -->
+<div id="bazi-page" class="page" style="display:none;">
+  <button class="btn back-btn" id="back-btn-bazi">← Back</button>
+  <h1>✦ Bazi Viewing ✦</h1>
+  <p>Coming soon...</p>
+</div>
+
+
+<!-- Horoscope Page -->
+<div id="horoscope-page" class="page" style="display:none;">
+  <button class="btn back-btn" id="back-btn-horoscope">← Back</button>
+  <h1>✦ Horoscope Musing ✦</h1>
+  <p>Enter two birthdays to reveal your cosmic connection.</p>
+
+  <div class="dob-container">
+    <div class="dob-group">
+      <label class="dob-label">Person 1</label>
+      <input type="text" id="dob1" class="dob-input" placeholder="DD/MM" maxlength="5">
+    </div>
+    <div class="dob-divider">✦</div>
+    <div class="dob-group">
+      <label class="dob-label">Person 2</label>
+      <input type="text" id="dob2" class="dob-input" placeholder="DD/MM" maxlength="5">
+    </div>
+  </div>
+
+  <button class="btn" id="check-btn">Reveal Compatibility</button>
+  <div id="horoscope-result"></div>
+</div>
+
+<script src="Tarot.js"></script>
+<script src="zodiac.js"></script>
+</body>
+</html>
