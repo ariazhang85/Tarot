@@ -161,7 +161,7 @@ p {
   cursor: pointer;
   opacity: 0;
   transform: translateY(28px);
-  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeInUp 2.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   position: relative;
   overflow: hidden;
